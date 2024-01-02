@@ -9,7 +9,7 @@ from sans import *
 TYPES_OF_POLICIES = {1:{"policy_name":"encryption policy","sans_template": sample_encryption_policy,"cloudsecurity_alliance": cloud_security_alliance_encryption},2:"ACCEPTABLE USE"}
 
 def ask_questions():
-    print("Welcome to Guidepoint Policy Engine Creator")
+    print("Welcome to Security Policy Engine Creator")
     type_of_policy = choose_type_of_policy(TYPES_OF_POLICIES)
     company_name = choose_company_name()
     employees = select_num_employees()
@@ -110,13 +110,11 @@ def compute_llm(policy,company_name,employees,industry,cloud_provider,pci,hippa,
     runnable = prompt | model | StrOutputParser()
 
     my_policy= runnable.invoke({"policy":policy['policy_name'],"company_name": company_name,"sample_policy":policy['sans_template'],"cloud_provider":cloud_provider,"employees":employees,"company_name":company_name,"industry":industry,"cloud_security_alliance":cloud_security_alliance.text,"sample_policy_2":sample_encryption_policy_2})
-                                #'aws_best_practice_data_in_transit_1':aws_best_practice_data_in_transit_1.text,"aws_best_practice_data_in_transit_2":aws_best_practice_data_in_transit_2.text,"aws_best_practice_data_in_transit_3":aws_best_practice_data_in_transit_3.text,"aws_best_practice_data_in_transit_4":aws_best_practice_data_in_transit_4.text})
+                               
 
 
     print(my_policy)
 
-
-# abb31e66-b772-46af-be85-163a08587cd3
 
 def main():
     ask_questions()
